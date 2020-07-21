@@ -3,9 +3,10 @@ package client
 import (
 	"crypto/tls"
 	"crypto/x509"
-	"github.com/trx35479/vault-gopher/pkg/log"
 	"net/http"
 	"time"
+
+	"github.com/trx35479/vault-gopher/pkg/log"
 )
 
 type Client struct {
