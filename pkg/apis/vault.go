@@ -140,6 +140,8 @@ func (c *Client) RevokeToken(vaultAddress, path, token, namespace string) (ok bo
 	return true, nil
 }
 
+// GetStatus is fix to query the status of vault endpoint
+// This is especially if you are using istio service mesh in kubernetes cluster
 func (c *Client) GetStatus(address, path string) error {
 	client := c.httpClient.Http(false)
 

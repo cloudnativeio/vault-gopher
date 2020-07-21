@@ -16,9 +16,9 @@ type Client struct {
 var logger = log.NewLogger()
 
 // Https config for the client + the ca cert
-func (c *Client) Https(cacrt []byte) *http.Client {
+func (c *Client) Https(ca []byte) *http.Client {
 	caCertPool := x509.NewCertPool()
-	if ok := caCertPool.AppendCertsFromPEM(cacrt); !ok {
+	if ok := caCertPool.AppendCertsFromPEM(ca); !ok {
 		logger.Println("could not decode ca.cert")
 	}
 	c.HttpClient = &http.Client{
