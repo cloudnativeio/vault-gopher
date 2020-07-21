@@ -5,13 +5,13 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
-	"github.com/trx35479/vault-gopher/pkg/log"
 	"io/ioutil"
 	"net/http"
 	"strings"
 	"time"
 
 	"github.com/trx35479/vault-gopher/pkg/client"
+	"github.com/trx35479/vault-gopher/pkg/log"
 	"github.com/trx35479/vault-gopher/pkg/models"
 )
 
