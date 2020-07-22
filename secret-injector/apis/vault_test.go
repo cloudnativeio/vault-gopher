@@ -34,7 +34,11 @@ func TestClient_GetClientToken(t *testing.T) {
 		{
 			name:    "GetClientToken",
 			fields:  fields{},
-			args:    args{requestBody: data, url: "http://vault.com/v1/some/auth/path", namespace: "sre-ns"},
+			args:    args{
+				requestBody: data,
+				url: "http://vault.com/v1/some/auth/path",
+				namespace: "sre-ns",
+			},
 			want:    "token",
 			wantErr: false,
 		},
@@ -91,7 +95,10 @@ func TestClient_GetData(t *testing.T) {
 		{
 			name:    "GetData",
 			fields:  fields{},
-			args:    args{token: "token", url: "http://vault.com/v1/secret/data/tls", namespace: "sre-ns"},
+			args:    args{token: "token",
+				url: "http://vault.com/v1/secret/data/tls",
+				namespace: "sre-ns",
+			},
 			want:    map[string]interface{}{"tls": "data"},
 			wantErr: false,
 		},
