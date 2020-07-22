@@ -3,13 +3,14 @@ package apis
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/trx35479/vault-gopher/secret-injector/client"
 	"io/ioutil"
 	"net/http"
 	"net/http/httptest"
 	"reflect"
 	"testing"
 	"time"
+
+	"github.com/trx35479/vault-gopher/secret-injector/client"
 )
 
 func TestClient_Get(t *testing.T) {
@@ -67,8 +68,8 @@ func TestClient_Get(t *testing.T) {
 					t.Errorf("Content-Type header is incorrect %s:", r.Header.Get("Content-Type"))
 				}
 				const BEARER_SCHEMA = "Bearer "
-				reqtoken := r.Header.Get("Authorization")
-				jwt := reqtoken[len(BEARER_SCHEMA):]
+				req := r.Header.Get("Authorization")
+				jwt := req[len(BEARER_SCHEMA):]
 				if jwt != "token" {
 					t.Errorf("Token is incorrect %s:", r.Header.Get("Authorization"))
 				}
@@ -108,7 +109,7 @@ func TestClient_Create(t *testing.T) {
 		ca         []byte
 		payload    []byte
 	}
-	caCrt, err := ioutil.ReadFile("../../ca.crt")
+	caCrt, err := ioutil.ReadFile("../../testdata/test.crt")
 	if err != nil {
 		t.Error(err)
 	}
@@ -199,7 +200,7 @@ func TestClient_Create(t *testing.T) {
 					t.Errorf("User-Agent header is set incorrect %s:", r.Header.Get("User-Agent"))
 				}
 			}))
-			go server.Config.ListenAndServeTLS("../../testdata/cert.pem", "../../testdata/key.pem")
+			go server.Config.ListenAndServeTLS("../../testdata/test.pem", "../../testdata/key.pem")
 			server.StartTLS()
 			defer server.Close()
 			time.Sleep(100 * time.Millisecond)
