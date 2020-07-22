@@ -10,9 +10,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/trx35479/vault-gopher/pkg/client"
-	"github.com/trx35479/vault-gopher/pkg/log"
-	"github.com/trx35479/vault-gopher/pkg/models"
+	"github.com/trx35479/vault-gopher/secret-injector/client"
+	"github.com/trx35479/vault-gopher/secret-injector/log"
+	"github.com/trx35479/vault-gopher/secret-injector/models"
 )
 
 type Client struct {

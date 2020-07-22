@@ -45,7 +45,7 @@ func EncodeValue(m map[string]interface{}) map[string]interface{} {
 			payload[k] = value
 		}
 		if err != nil {
-			fmt.Println("encountred an error on regexp")
+			fmt.Println("encountered an error on regexp")
 		}
 	}
 	return payload

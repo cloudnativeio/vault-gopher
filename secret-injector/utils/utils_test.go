@@ -6,8 +6,6 @@ import (
 	"testing"
 )
 
-
-
 func TestEncodeValue(t *testing.T) {
 	type args struct {
 		m map[string]interface{}

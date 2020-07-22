@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/trx35479/vault-gopher/pkg/log"
+	"github.com/trx35479/vault-gopher/secret-injector/log"
 )
 
 type Client struct {

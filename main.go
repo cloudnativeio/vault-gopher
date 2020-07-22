@@ -1,8 +1,8 @@
 package main
 
 import (
-	"github.com/trx35479/vault-gopher/pkg/apis"
-	"github.com/trx35479/vault-gopher/pkg/log"
+	"github.com/trx35479/vault-gopher/secret-injector/apis"
+	"github.com/trx35479/vault-gopher/secret-injector/log"
 )
 
 func main() {
