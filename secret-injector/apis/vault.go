@@ -82,7 +82,7 @@ func (c *Client) GetData(token, url, namespace string) (map[string]interface{}, 
 	// Send the request to Vault
 	resp, err := client.Do(req)
 	if err != nil {
-		return nil, fmt.Errorf("error sending request to Vault API for url: %s", url)
+		return nil, fmt.Errorf("error sending request to vault api for url: %s", url)
 	}
 
 	logger.LogGopher(resp, req)
@@ -135,7 +135,7 @@ func (c *Client) RevokeToken(vaultAddress, path, token, namespace string) (ok bo
 	}
 
 	if resp.StatusCode != http.StatusOK {
-		return false, fmt.Errorf("error response fromvault api for url: %s", requestUrl)
+		return false, fmt.Errorf("error response from vault api for url: %s", requestUrl)
 	}
 	return true, nil
 }

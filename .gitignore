@@ -12,7 +12,9 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 *.log
-
+**.crt
+**,key
+**.pem
 .DS_Store
 
 # VS Code IDE settings
