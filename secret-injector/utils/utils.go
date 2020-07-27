@@ -33,16 +33,14 @@ func EncodeValue(m map[string]interface{}) map[string]interface{} {
 			}
 			ok := checkUnicode(string(decode))
 			if !ok {
-				value := base64.StdEncoding.EncodeToString([]byte(v.(string)))
-				payload[k] = value
+				payload[k] = base64.StdEncoding.EncodeToString([]byte(v.(string)))
 			}
 			if ok {
 				payload[k] = v
 			}
 		}
 		if !ok {
-			value := base64.StdEncoding.EncodeToString([]byte(v.(string)))
-			payload[k] = value
+			payload[k] = base64.StdEncoding.EncodeToString([]byte(v.(string)))
 		}
 		if err != nil {
 			fmt.Println("encountered an error on regexp")

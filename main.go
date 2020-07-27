@@ -1,13 +1,16 @@
 package main
 
 import (
-	"github.com/trx35479/vault-gopher/secret-injector/apis"
+	handler "github.com/trx35479/vault-gopher/secret-injector"
 	"github.com/trx35479/vault-gopher/secret-injector/log"
 )
 
 func main() {
 	var logger = log.NewLogger()
-	logger.Println("Secret has been created...")
-	c := apis.Client{}
-	c.GetClientToken(sfsdf)
+	logger.Println("App starting")
+	err := handler.CreateObject("secret")
+	if err != nil {
+		logger.Fatal(err)
+	}
+	logger.Println("Secret has been created")
 }
