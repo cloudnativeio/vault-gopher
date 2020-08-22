@@ -24,32 +24,32 @@ type Secret struct {
 
 // Construct the kubernetes manifest and return it as a byte
 // the manifest will be in json format
-func Object(name, ns string, data map[string]interface{}) ([]byte, error) {
+func object(name, ns string, data map[string]interface{}) ([]byte, error) {
 	// get the appName and inject it to metadata.labels
 	var appName string
 
 	// strings.Split returns a slice of byte [byte1 byte2 byte3]
-	strs := strings.Split(name, "-")
-	// verify if the slice is not emtpy otherwise return an error
-	if len(strs) == 0 {
+	str := strings.Split(name, "-")
+	// verify if the slice is not empty otherwise return an error
+	if len(str) == 0 {
 		return nil, fmt.Errorf("name of secrets does not satisfy the naming requirement")
 	}
 	// get the second byte from right
-	env := strs[len(strs)-2]
+	env := str[len(str)-2]
 	// current env name
 	envName := strings.Split(ns, "-")[0]
 	// get the last byte from right
-	lastByte := strs[len(strs)-1]
+	lastByte := str[len(str)-1]
 
 	// check the name of object has the env string or not and return the app name only
 	if env == envName {
 		if lastByte == "secret" || lastByte == "secrets" {
-			appName = strings.Join(strs[:len(strs)-2], "-")
+			appName = strings.Join(str[:len(str)-2], "-")
 		} else {
-			appName = strings.Join(strs[:len(strs)-1], "-")
+			appName = strings.Join(str[:len(str)-1], "-")
 		}
 	} else if lastByte == "secret" || lastByte == "secrets" || lastByte == envName {
-		appName = strings.Join(strs[:len(strs)-1], "-")
+		appName = strings.Join(str[:len(str)-1], "-")
 	} else {
 		appName = name
 	}
@@ -78,7 +78,7 @@ func Object(name, ns string, data map[string]interface{}) ([]byte, error) {
 			Labels: map[string]interface{}{
 				"app.kubernetes.io/name":       appName,
 				"app.kubernetes.io/component":  component,
-				"app.kubernetes.io/managed-by": "ob-vault-gopher",
+				"app.kubernetes.io/managed-by": "vault-gopher",
 			},
 		},
 	}

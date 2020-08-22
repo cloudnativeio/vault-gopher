@@ -176,7 +176,7 @@ func CreateObject(objectName string) error {
 				return fmt.Errorf("encountered error while fetching secrets from vault: %s", err)
 			}
 			// We safeguard the runtime here
-			// Sometimes's a call to secret returns an empty object
+			// Sometimes a call to secret returns an empty object
 			if len(payload) != 0 {
 				for key, secret := range payload {
 					data[key] = secret
@@ -214,7 +214,7 @@ func create(m map[string]interface{}, objectName, secretObjectName string) error
 
 	if len(m) != 0 {
 		// We get that secrets payload and feed it to Object() function and return the json formatted secret object manifest for kubernetes api
-		object, err := Object(secretObjectName, string(namespace), utils.EncodeValue(m))
+		object, err := object(secretObjectName, string(namespace), utils.EncodeValue(m))
 		if err != nil {
 			return fmt.Errorf("encountered error while constructing kubernetes object: %s", err)
 		}
